@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-illustration">
-                        <img src="{{ asset('images/erlinda.jpeg') }}" alt="Pilihan menu sehat">
+                        <img src="{{ asset('images/erlin.jpeg') }}" alt="Pilihan menu sehat">
                     </div>
                 </div>
             </div>
