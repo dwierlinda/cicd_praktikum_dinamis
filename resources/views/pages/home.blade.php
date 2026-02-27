@@ -17,7 +17,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('{{ asset('images/sayuran.jpg') }}') center/cover no-repeat;
+            background: url('{{ asset('images/erlinda.jpeg') }}') center/cover no-repeat;
             opacity: 0.12;
             pointer-events: none;
         }
