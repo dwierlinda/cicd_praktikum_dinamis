@@ -110,7 +110,7 @@
         <div class="container hero-content">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6">
-                    <span class="capsule-badge mb-3">Hidup lebih sehat dan bahagia</span>
+                    <span class="capsule-badge mb-3">Hidup lebih bahagia</span>
                     <h1 class="display-5 fw-bold mb-3">Selamat Datang di <span style="color:#ffe66d;">Fitlife.id</span></h1>
                     <p class="lead mb-4">Platform manajemen diet dan pola makan digital untuk hidup yang lebih sehat dengan
                         menu lezat, artikel inspiratif, dan kalkulator BMI.</p>
