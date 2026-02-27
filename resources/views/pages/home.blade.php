@@ -6,7 +6,7 @@
 
     <style>
         .hero-section {
-            background: linear-gradient(120deg, #1fb879 0%, #0da36b 100%);
+            background: linear-gradient(120deg, #ff4da6 0%, #e60073 100%);
             color: #fff;
             position: relative;
             overflow: hidden;
@@ -17,7 +17,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('{{ asset('images/erlinda.jpeg') }}') center/cover no-repeat;
+            background: url('{{ asset('images/erlin.jpeg') }}') center/cover no-repeat;
             opacity: 0.12;
             pointer-events: none;
         }
@@ -53,7 +53,7 @@
 
         .feature-section {
             padding: 70px 0 50px;
-            background: #f7fbf8;
+            background: #fff5fa;
         }
 
         .fitlife-card {
@@ -74,8 +74,9 @@
         .fitlife-icon {
             width: 48px;
             height: 48px;
-            background: #e7f8ef;
-            color: #0da36b;
+            .fitlife-icon {
+            background: #fff0f7;
+            color: #e60073;
             border-radius: 12px;
             display: inline-flex;
             align-items: center;
@@ -85,7 +86,7 @@
         }
 
         .cta-section {
-            background: linear-gradient(120deg, #1fb879 0%, #0aa56a 100%);
+            background: linear-gradient(120deg, #ff4da6 0%, #e60073 100%);
             color: #fff;
             padding: 60px 0;
         }
@@ -110,17 +111,18 @@
         <div class="container hero-content">
             <div class="row align-items-center g-4">
                 <div class="col-lg-6">
-                    <span class="capsule-badge mb-3">Hidup lebih bahagia</span>
-                    <h1 class="display-5 fw-bold mb-3">Selamat Datang di <span style="color:#ffe66d;">Fitlife.id</span></h1>
-                    <p class="lead mb-4">Platform manajemen diet dan pola makan digital untuk hidup yang lebih sehat dengan
-                        menu lezat, artikel inspiratif, dan kalkulator BMI.</p>
+                    <span class="capsule-badge mb-3">>Hi, I'm Erlinda 💗</span>
+                    <h1 class="display-5 fw-bold mb-3">Welcome To<span style="color:#fE36A6A;">dwip.id</span></h1>
+                    <p class="lead mb-4">Aku orangnya ceria dan suka banget warna pink 🌸
+                        Website ini aku buat sebagai ruang kecil tentang aku dan hal-hal yang aku suka.
+                        Yuk kenalan lebih dekat!.</p>
                     <div class="d-flex flex-wrap gap-3">
                         @auth
                             <a href="{{ route('kalkulator') }}" class="btn btn-light pill-btn fw-semibold">Mulai Sekarang</a>
                         @else
                             <a href="{{ route('auth.index') }}" class="btn btn-light pill-btn fw-semibold">Mulai Sekarang</a>
                         @endauth
-                        <a href="#fitur" class="btn btn-outline-light pill-btn">Pelajari Lebih Lanjut</a>
+                        <a href="#fitur" class="btn btn-outline-light pill-btn">Tantang Aku</a>
                     </div>
                 </div>
                 <div class="col-lg-6">

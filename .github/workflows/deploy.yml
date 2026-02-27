@@ -23,8 +23,16 @@ jobs:
         script: |
           cd /var/www/project_erlin
           php artisan down
+
+          # pastikan folder selalu sama dengan GitHub (biar gak kejadian konflik lagi)
+          git reset --hard
+          git clean -fd
           git pull origin main
-          composer install --no-dev
+
+          composer install --no-dev --optimize-autoloader
           php artisan migrate --force
-          php artisan optimize
+
+          # clear cache biar perubahan blade/gambar langsung kebaca
+          php artisan optimize:clear
+
           php artisan up
