@@ -112,7 +112,7 @@
             <div class="row align-items-center g-4">
                 <div class="col-lg-6">
                     <span class="capsule-badge mb-3">Hi, I'm Erlinda </span>
-                    <h1 class="display-5 fw-bold mb-3">Welcome To<span style="color:#fE36A6A;">dwip.id</span></h1>
+                    <h1 class="display-5 fw-bold mb-3">Welcome To<span style="color:#fE36A6A;"> dwip.id</span></h1>
                     <p class="lead mb-4">Aku orangnya ceria dan suka banget warna pink 
                         Website ini aku buat sebagai ruang kecil tentang aku dan hal-hal yang aku suka.
                         Yuk kenalan lebih dekat!.</p>

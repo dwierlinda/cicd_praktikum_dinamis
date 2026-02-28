@@ -13,16 +13,16 @@
 
     <style>
         :root {
-            --fitlife-primary: #1fb879;
-            --fitlife-primary-dark: #0da36b;
-            --fitlife-accent: #f4fdf8;
-            --fitlife-text: #1c2c3a;
-            --fitlife-muted: #6c7d86;
+            --fitlife-primary: #ff69b4;        /* pink ceria */
+            --fitlife-primary-dark: #e0559f;   /* pink hover */
+            --fitlife-accent: #ffe6f2;         /* soft pink */
+            --fitlife-text: #5a0033;
+            --fitlife-muted: #a64d79;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f1f6f4;
+            background: #fff0f6;
             color: var(--fitlife-text);
             margin: 0;
         }
