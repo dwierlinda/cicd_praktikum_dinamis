@@ -76,7 +76,7 @@
             height: 48px;
             .fitlife-icon {
             background: #fff0f7;
-            color: #e60073;
+            color: #e60072;
             border-radius: 12px;
             display: inline-flex;
             align-items: center;
