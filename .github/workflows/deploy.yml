@@ -1,4 +1,4 @@
-name: Deploy Laravel App
+name: CI/CD Laravel Docker
 
 on:
   push:
@@ -6,56 +6,37 @@ on:
       - main
 
 jobs:
-  test:
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.3"
-          extensions: mbstring, pdo, pdo_sqlite, sqlite3
-          coverage: none
+      - name: Login ke GHCR
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Install Composer
-        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Build Docker image
+        run: docker build -t ghcr.io/dwierlinda/cicd_praktikum_dinamis/laravel-app:latest .
 
-      - name: Prepare Laravel
-        run: |
-          cp .env.example .env
-          php artisan key:generate
+      - name: Push Docker image
+        run: docker push ghcr.io/dwierlinda/cicd_praktikum_dinamis/laravel-app:latest
 
-      - name: Run Test
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: ":memory:"
-        run: php artisan test
   deploy:
+    needs: build-and-push
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: SSH Deploy
-      uses: appleboy/ssh-action@v1
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.SSH_PORT }}
-        script: |
-          cd /var/www/project_erlin
-          php artisan down
-
-          git reset --hard
-          git clean -fd
-          git pull origin main
-
-          composer install --no-dev --optimize-autoloader
-          php artisan migrate --force
-          php artisan optimize:clear
-
-          php artisan up
+      - name: Deploy ke server via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u dwierlinda --password-stdin
+            cd /var/www/project_erlin
+            docker compose pull
+            docker compose down
+            docker compose up -d
