@@ -1,6 +1,5 @@
 FROM php:8.2-fpm-alpine
 
-# Install dependencies sistem
 RUN apk add --no-cache \
     nginx \
     nodejs \
@@ -10,40 +9,40 @@ RUN apk add --no-cache \
     unzip \
     git \
     supervisor \
-    libpng-dev \
+    icu-dev \
     libzip-dev \
     oniguruma-dev \
     libxml2-dev \
-    icu-dev
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
+    $PHPIZE_DEPS
 
-# Install ekstensi PHP
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+
 RUN docker-php-ext-install \
     pdo_mysql \
     mbstring \
     exif \
     pcntl \
     bcmath \
-    gd \
     opcache \
     zip \
-    intl
+    intl \
+    gd
 
-# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copy project
-COPY . .
-
-# Install dependency Laravel
+COPY composer.json composer.lock ./
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Permission Laravel
+COPY . .
+
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
     chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Copy konfigurasi Nginx dan Supervisor
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
